@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f3" displayName="Area" projectFiles="true">
+      <itemPath>Area/Area.cpp</itemPath>
+      <itemPath>Area/Area.h</itemPath>
+      <itemPath>Area/Area_Surround_Brightness.cpp</itemPath>
+      <itemPath>Area/Area_Surround_Brightness.h</itemPath>
+      <itemPath>Area/Area_Surrounding.h</itemPath>
+      <itemPath>Area/Areas.cpp</itemPath>
+      <itemPath>Area/Areas.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f4" displayName="Background" projectFiles="true">
+      <itemPath>Background/Background.cpp</itemPath>
+      <itemPath>Background/Background.h</itemPath>
+      <itemPath>Background/Background_Scenes.cpp</itemPath>
+      <itemPath>Background/Background_Scenes.h</itemPath>
+      <itemPath>Background/Background_Slot.cpp</itemPath>
+      <itemPath>Background/Background_Slot.h</itemPath>
+      <itemPath>Background/Background_Value.cpp</itemPath>
+      <itemPath>Background/Background_Value.h</itemPath>
+      <itemPath>Background/sunset.cpp</itemPath>
+      <itemPath>Background/sunset.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Hubs" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="UI" projectFiles="true">
+      </logicalFolder>
+      <itemPath>Area/Area_PID.h</itemPath>
+      <itemPath>Global.h</itemPath>
+      <itemPath>Master.h</itemPath>
+      <itemPath>PowerMeterSolar.h</itemPath>
+      <itemPath>Thread.h</itemPath>
+      <itemPath>WorkItem.h</itemPath>
+      <itemPath>hardware.h</itemPath>
+      <itemPath>hardware_nrf_msg.h</itemPath>
+      <itemPath>powermeter.h</itemPath>
+      <itemPath>powermeter_values.h</itemPath>
+      <itemPath>tcp.h</itemPath>
+      <itemPath>tcpacceptor.h</itemPath>
+      <itemPath>tcpstream.h</itemPath>
+      <itemPath>wqueue.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f6" displayName="Hubs" projectFiles="true">
+      <logicalFolder name="f1" displayName="Tree_Mesh" projectFiles="true">
+        <itemPath>Hubs/Tree_Mesh/Tree_Message.cpp</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_Message.h</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_Node.cpp</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_Node.h</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_OTA.cpp</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_OTA.h</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_OTA_list_item.h</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_Server.cpp</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_Server.h</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_Structs.cpp</itemPath>
+        <itemPath>Hubs/Tree_Mesh/Tree_Structs.h</itemPath>
+      </logicalFolder>
+      <itemPath>Hubs/Hue_Bridge.cpp</itemPath>
+      <itemPath>Hubs/Hue_Bridge.h</itemPath>
+      <itemPath>Hubs/Hue_Bridges.cpp</itemPath>
+      <itemPath>Hubs/Hue_Bridges.h</itemPath>
+      <itemPath>Hubs/Hue_Device.cpp</itemPath>
+      <itemPath>Hubs/Hue_Device.h</itemPath>
+      <itemPath>Hubs/Hue_EventStream.cpp</itemPath>
+      <itemPath>Hubs/Hue_EventStream.h</itemPath>
+      <itemPath>Hubs/Hue_Send_Buffer.cpp</itemPath>
+      <itemPath>Hubs/Hue_Send_Buffer.h</itemPath>
+      <itemPath>Hubs/Hue_Service.cpp</itemPath>
+      <itemPath>Hubs/Hue_Service.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f2" displayName="Inputs" projectFiles="true">
+      <itemPath>Inputs/Button.cpp</itemPath>
+      <itemPath>Inputs/Button.h</itemPath>
+      <itemPath>Inputs/Button_Action.cpp</itemPath>
+      <itemPath>Inputs/Button_Action.h</itemPath>
+      <itemPath>Inputs/Button_Member.cpp</itemPath>
+      <itemPath>Inputs/Button_Member.h</itemPath>
+      <itemPath>Inputs/Buttons.cpp</itemPath>
+      <itemPath>Inputs/Buttons.h</itemPath>
+      <itemPath>Inputs/Sensor.cpp</itemPath>
+      <itemPath>Inputs/Sensor.h</itemPath>
+      <itemPath>Inputs/Sensors.cpp</itemPath>
+      <itemPath>Inputs/Sensors.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f7" displayName="Macro" projectFiles="true">
+      <itemPath>Macro/Macro.cpp</itemPath>
+      <itemPath>Macro/Macro.h</itemPath>
+      <itemPath>Macro/Macro_Step.cpp</itemPath>
+      <itemPath>Macro/Macro_Step.h</itemPath>
+      <itemPath>Macro/Macros.cpp</itemPath>
+      <itemPath>Macro/Macros.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f1" displayName="Outputs" projectFiles="true">
+      <itemPath>Outputs/Light.cpp</itemPath>
+      <itemPath>Outputs/Light.h</itemPath>
+      <itemPath>Outputs/LightState.h</itemPath>
+      <itemPath>Outputs/Lights.cpp</itemPath>
+      <itemPath>Outputs/Lights.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="f5" displayName="Scenes" projectFiles="true">
+      <itemPath>Scenes/Scene.cpp</itemPath>
+      <itemPath>Scenes/Scene.h</itemPath>
+      <itemPath>Scenes/Scene_Values.cpp</itemPath>
+      <itemPath>Scenes/Scene_Values.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Hubs" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="UI" projectFiles="true">
+      </logicalFolder>
+      <itemPath>Area/Area_PID.cpp</itemPath>
+      <itemPath>Global.cpp</itemPath>
+      <itemPath>Master.cpp</itemPath>
+      <itemPath>PowerMeterSolar.cpp</itemPath>
+      <itemPath>Thread.cpp</itemPath>
+      <itemPath>hardware.cpp</itemPath>
+      <itemPath>hardware_nrf_msg.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+      <itemPath>powermeter.cpp</itemPath>
+      <itemPath>powermeter_values.cpp</itemPath>
+      <itemPath>tcp.cpp</itemPath>
+      <itemPath>tcpacceptor.cpp</itemPath>
+      <itemPath>tcpstream.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>Hubs/Tree_Mesh</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>11</standard>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
+            <linkerOptionItem>-lcurl</linkerOptionItem>
+            <linkerOptionItem>-lpigpio -lrt</linkerOptionItem>
+            <linkerOptionItem>-lcrypto</linkerOptionItem>
+            <linkerOptionItem>-lwiringPi</linkerOptionItem>
+          </linkerLibItems>
+          <commandLine>`mysql_config --libs` `mysql_config --cflags`</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Area/Area.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Area/Area.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Area/Area_PID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Area/Area_PID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Area/Area_Surround_Brightness.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Area/Area_Surround_Brightness.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Area/Area_Surrounding.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Area/Areas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Area/Areas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/Background.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/Background.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/Background_Scenes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/Background_Scenes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/Background_Slot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/Background_Slot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/Background_Value.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/Background_Value.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/sunset.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/sunset.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Global.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Global.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Bridge.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Bridge.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Bridges.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Bridges.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Device.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Device.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_EventStream.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_EventStream.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Send_Buffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Send_Buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Service.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Service.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Message.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Message.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Node.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Node.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_OTA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_OTA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_OTA_list_item.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Server.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Structs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Structs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Button.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Button.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Button_Action.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Button_Action.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Button_Member.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Button_Member.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Buttons.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Buttons.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Sensor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Sensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Sensors.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Sensors.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Macro/Macro.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Macro/Macro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Macro/Macro_Step.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Macro/Macro_Step.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Macro/Macros.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Macro/Macros.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Master.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Master.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Outputs/Light.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Outputs/Light.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Outputs/LightState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Outputs/Lights.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Outputs/Lights.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PowerMeterSolar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PowerMeterSolar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Scenes/Scene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Scenes/Scene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Scenes/Scene_Values.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Scenes/Scene_Values.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Thread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="WorkItem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hardware.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hardware.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hardware_nrf_msg.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hardware_nrf_msg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="powermeter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="powermeter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="powermeter_values.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="powermeter_values.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tcp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tcp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tcpacceptor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tcpacceptor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tcpstream.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tcpstream.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="wqueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>11</standard>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="Area/Area.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Area/Area.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Area/Area_PID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Area/Area_PID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Area/Area_Surround_Brightness.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Area/Area_Surround_Brightness.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Area/Area_Surrounding.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Area/Areas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Area/Areas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/Background.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/Background.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/Background_Scenes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/Background_Scenes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/Background_Slot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/Background_Slot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/Background_Value.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/Background_Value.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Background/sunset.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Background/sunset.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Global.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Global.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Bridge.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Bridge.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Bridges.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Bridges.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Device.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Device.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_EventStream.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_EventStream.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Send_Buffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Send_Buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Service.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Hue_Service.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Message.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Message.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Node.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Node.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_OTA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_OTA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_OTA_list_item.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Server.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Structs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Hubs/Tree_Mesh/Tree_Structs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Button.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Button.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Button_Action.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Button_Action.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Button_Member.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Button_Member.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Buttons.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Buttons.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Sensor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Sensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Inputs/Sensors.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Inputs/Sensors.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Macro/Macro.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Macro/Macro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Macro/Macro_Step.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Macro/Macro_Step.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Macro/Macros.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Macro/Macros.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Master.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Master.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Outputs/Light.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Outputs/Light.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Outputs/LightState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Outputs/Lights.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Outputs/Lights.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PowerMeterSolar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PowerMeterSolar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Scenes/Scene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Scenes/Scene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Scenes/Scene_Values.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Scenes/Scene_Values.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Thread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="WorkItem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hardware.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hardware.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hardware_nrf_msg.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hardware_nrf_msg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="powermeter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="powermeter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="powermeter_values.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="powermeter_values.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tcp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tcp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tcpacceptor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tcpacceptor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tcpstream.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tcpstream.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="wqueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
