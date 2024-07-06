@@ -15,7 +15,7 @@
 #include "Tree_OTA.h"
 
 Tree_OTA::Tree_OTA() {
-    this->main_folder = "/var/www/html/MeshFirmware/";
+    this->main_folder = "/var/www/html/ScreenConfigurator/Screen/";
     this->ota_running = false;
     this->msgid = 0; 
     this->load_list();
@@ -33,46 +33,21 @@ void Tree_OTA::load_list() {
     for (int i = 0; i < this->OTAlist.size(); i++) {
         delete this->OTAlist[i];
     }
-    this->OTAlist.clear();
-    this->OTAlist.shrink_to_fit();
-    
-     MYSQL *ms = Mysql_Connect();
-    if (ms != NULL) {
-        string query = "SELECT NodeType, Version, FileName FROM Tree_Node_Firmware";
-        if (!mysql_query(ms, query.c_str())) {
-            MYSQL_RES *result = mysql_store_result(ms);
-            if (result != NULL) {
-                //Get the number of columns
-                int num_rows = mysql_num_rows(result);
-                int num_fields = mysql_num_fields(result);
-
-                MYSQL_ROW row; //An array of strings
-                while ((row = mysql_fetch_row(result))) {
-                    if (num_fields >= 1) {
-                         Tree_OTA_list_item *item = new Tree_OTA_list_item();
-                         item->nodetype = atoi(row[0]);
-                         item->firmware = atoi(row[1]);
-                         item->filename = row[2];
-                         this->OTAlist.push_back(item);
-                    }
-                }
-                mysql_free_result(result);
-
-            }
-        } else {
-            string ms_err = string(mysql_error(ms));
-            cout << "MYSQL Error " << ms_err << endl;
-        }
-        Mysql_Disconnect(ms);
-    } 
-//    this->OTAlist.push_back(item);
+      this->OTAlist.clear();
+      
+    Tree_OTA_list_item *item = new Tree_OTA_list_item();
+    item->filename = "firmware.bin";
+    item->firmware = 8;
+    item->nodeid = 0;
+    item->nodetype = NODE_TYPES::MSH_DISPLAY;
+    this->OTAlist.push_back(item);
     m.unlock();
 
 };
 
 Tree_Message *Tree_OTA::check_firmware(Tree_Node *node) {
     Tree_Message *ret = NULL;
-    m.lock();
+    //m.lock();
     //if (this->ota_running == false) {
         bool found = false;
         //check OTA BY NODEID
@@ -84,17 +59,15 @@ Tree_Message *Tree_OTA::check_firmware(Tree_Node *node) {
                 } 
             }
         }        
-    //}
-    m.unlock();
+   // }
+   // m.unlock();
     return ret;
 }
 
-Tree_Message *Tree_OTA::handle_OTA_Request(Tree_Node *node, Tree_Message *mes){
-    m.lock();
-    OTA_Header *hdr = (OTA_Header*) mes->header->SPECIAL;
+Tree_Message *Tree_OTA::handle_OTA_Request(Tree_Node *node, Tree_Message *m){
+    OTA_Header *hdr = (OTA_Header*) m->header->SPECIAL;
     cout << "OTA REQUEST HDR INDEX " <<(uint32_t) hdr->index << endl;
     Tree_Message *ret = this->create_message(node, hdr->index);
-    m.unlock();
     return ret;
 };
 
@@ -189,7 +162,7 @@ void Tree_OTA::loop_work(){
     m.lock();
     if(this->ota_running){
     uint64_t diff = time(0) - this->ota_running_set;
-    if(diff > 120){
+    if(diff > 60){
         this->ota_running = false;
     }
     }

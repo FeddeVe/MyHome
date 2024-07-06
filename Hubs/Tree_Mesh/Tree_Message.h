@@ -18,7 +18,6 @@
 
 #define MAX_MSG_SIZE 1024
 #define MAX_RESEND 10
-#define BROADCAST_ADDR 0xFFFFFFFF
 
 class Tree_Server;
 
@@ -50,12 +49,6 @@ enum msg_types {
     Time_Report = 24,
     Area_Report = 25,
     Temperature = 26,
-    Ident = 27,
-    ButtonState = 28,
-    PWRMeter = 29,
-    StartTempCalib = 30,
-     TempCalibReport = 31,
-    TempCalibPublish = 32,
     test = 5432
 };
 
@@ -72,10 +65,6 @@ struct HDR {
         uint16_t firmware : 16;
         uint32_t config : 32;
         uint64_t uptime : 64;
-        uint8_t core_0_reset_info : 8;
-        uint8_t core_1_reset_info : 8;
-        uint8_t layer;
-        uint8_t tmp1;
         char SPECIAL[16]; // size of 2x64
         char data[MAX_MSG_SIZE];
 };
