@@ -8,3 +8,6 @@ Monitoring power and gas usage and returns
 # Status
 Continues in development
 
+# Todo
+Place items from 'virtual' folder to a real folder
+
