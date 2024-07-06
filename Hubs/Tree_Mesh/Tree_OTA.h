@@ -25,7 +25,6 @@
 #include "Tree_Node.h"
 #include "Tree_Message.h"
 #include "Tree_Server.h"
-#include "../../Global.h"
 
 using namespace std;
 

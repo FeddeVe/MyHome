@@ -98,12 +98,7 @@ struct str_BME680{
     float pressure;
     float co2;
     uint8_t BME_Status;
-    uint8_t BSEC_Status;    
-    uint8_t Calibrated;
-};
-
-struct str_temp{
-    float temperature;
+    uint8_t BSEC_Status;
 };
 
     struct str_file { 
@@ -114,10 +109,11 @@ struct str_temp{
     struct str_display_config {
         char config_header[10];
         uint32_t version;
-        uint32_t area_id; 
+        uint32_t area_id;
+        float temp_offset_fast;
+        float temp_offset_slow;
         uint8_t off_touch_mode;
         uint8_t off_long_press_mode;
-        uint8_t io_input;
         uint8_t max_int;
         uint8_t min_int;
         uint8_t max_touch_int;
@@ -128,8 +124,6 @@ struct str_temp{
         uint8_t shadow_r;
         uint8_t shadow_g;
         uint8_t shadow_b;
-        uint8_t def_page;
-        uint8_t dualpagemode;
         str_file btn_1;
         str_file btn_1_active;
         str_file btn_1_touch;
@@ -175,38 +169,45 @@ struct str_temp{
         str_file btn_7;
         str_file btn_7_active;
         str_file btn_7_touch;
-        str_file btn_7_icon;
         char btn7_header[32];
         char btn7_footer[32];
         uint8_t btn7_function;
         str_file btn_8;
         str_file btn_8_active;
         str_file btn_8_touch;
-        str_file btn_8_icon;
         char btn8_header[32];
         char btn8_footer[32];
         uint8_t btn8_function;
         str_file btn_9;
         str_file btn_9_active;
         str_file btn_9_touch;
-        str_file btn_9_icon;
         char btn9_header[32];
         char btn9_footer[32];
         uint8_t btn9_function;
         str_file btn_10;
         str_file btn_10_active;
         str_file btn_10_touch;
-        str_file btn_10_icon;
         char btn10_header[32];
         char btn10_footer[32];
         uint8_t btn10_function;
         str_file btn_11;
         str_file btn_11_active;
         str_file btn_11_touch;
-        str_file btn_11_icon;
         char btn11_header[32];
         char btn11_footer[32];
-        uint8_t btn11_function;         
+        uint8_t btn11_function;
+        str_file btn_12;
+        str_file btn_12_active;
+        str_file btn_12_touch;
+        char btn12_header[32];
+        char btn12_footer[32];
+        uint8_t btn12_function;
+        str_file wifi_ok;
+        str_file wifi_nok_0;
+        str_file wifi_nok_1;
+        str_file wifi_nok_2;
+        str_file wifi_nok_3;
+        str_file wifi_nok_4;
         str_file flame_off;
         str_file flame_on;
         str_file hum_icon;
@@ -218,43 +219,8 @@ struct str_temp{
         str_file settings_icon;
         str_file def_background;
         str_file close_icon;
-        str_file arrow_left;
-        str_file arrow_right;
-        str_file warning_icon;
+         
     };
-    
-    struct str_lux{
-    uint16_t raw_lux;
-    uint16_t buffered_lux;
-};
-    
-struct str_buttonstate{
-    uint32_t state;
-};
-
-struct str_pwrmeter{
-  uint32_t deliverd1;
-  uint32_t deliverd2;
-  uint32_t returned1;
-  uint32_t returned2;
-  int32_t current_deliverd;
-  uint32_t current_returned; 
-  uint32_t gas;
-  uint32_t l1_volt;
-  uint32_t l1_amp;
-  uint32_t l2_volt;
-  uint32_t l2_amp;
-  uint32_t l3_volt;
-  uint32_t l3_amp;
-};
-
-struct str_calibration_report{
-    uint32_t nodeid;
-    uint8_t calibrated;
-    uint16_t node_type;
-    uint32_t offsets[101];
-};
-  
     
   
 

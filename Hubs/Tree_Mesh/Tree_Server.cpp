@@ -11,8 +11,7 @@
 
 #include "Tree_Server.h"
 
-Tree_Server::Tree_Server(Master *refmaster) {
-    this->refmaster = refmaster;
+Tree_Server::Tree_Server() { 
     this->index = 0;
     this->exit = false;
     this->host_ready = true;
@@ -45,12 +44,12 @@ void *Tree_Server::run() {
 
     stream = NULL;
     acceptor = NULL;
-   // acceptor = new TCPAcceptor(5434);
+    acceptor = new TCPAcceptor(5434);
     cout << "Server started at port 7011" << endl;
     sockaddr cliaddr;
     memset(&cliaddr, 0, sizeof (cliaddr));
     string ret_msg;
-    ssize_t len;
+    size_t len;
     char buffer[2048];
     vector<char>work_buffer;
     size_t maxlen = 5;
@@ -58,22 +57,20 @@ void *Tree_Server::run() {
     uint32_t size = 0;
     uint32_t work_buffer_index = 0;
     bool message_reading = false;
-   
+    if (acceptor->start() == 0) {
 
         while (this->exit == false) {
-            acceptor = new TCPAcceptor(5434);
-            if (acceptor->start() == 0) {
             stream = acceptor->accept();
             cout << "Client Connected" << endl;
             if (stream != NULL) {
                 try {
                     // while ((len = stream->receive(line, sizeof (line), 15)) > 0) {
                     while ((len = stream->receive(buffer, sizeof (buffer), 15)) > 0) {
-                        if (len <= 0) {
+                        if (len < 0) {
                             break;
                         }
                         if (len >= sizeof (buffer)) {
-                            len = sizeof(buffer);
+                            break;
                         }
                         // Data received
                         index = 0;
@@ -107,7 +104,8 @@ void *Tree_Server::run() {
                             }
                             index++;
 
-                        }                        
+                        }
+                        
                     } // while connected 
             } catch (exception& e) {
                 cout << "TCP ERROR + " + string(e.what()) << endl;
@@ -115,22 +113,17 @@ void *Tree_Server::run() {
             }
             delete stream;
         }
-        this->connected = false;        
+        this->connected = false;
         // this->sleep = 50000;
         cout << "Client Disconnected" << endl;
-        
-        delete this->acceptor;
-        this->acceptor = NULL;
-            }
-        
     }
-
+}
 cout << "SERVER STOPPED" << endl;
-return NULL;
+ 
 };
 
 uint32_t Tree_Server::get_msg_id() {
-    if (this->msg_id >= UINT32_MAX) {
+    if (this->msg_id > UINT32_MAX) {
         this->msg_id = 0;
     }
     this->msg_id++;
@@ -167,10 +160,8 @@ bool Tree_Server::handle_msg(Tree_Message *m) {
             }
         }
         if (node == NULL) {
-            if(m->header->node_type != 0){
-            node = new Tree_Node(this, m, this->refmaster);
+            node = new Tree_Node(this, m);
             this->nodes.push_back(node);
-            }
         }
         return true;
     }
@@ -220,7 +211,7 @@ bool Tree_Server::handle_msg(Tree_Message *m) {
             }
         }
         if (node == NULL) {
-            node = new Tree_Node(this, m, this->refmaster);
+            node = new Tree_Node(this, m);
             this->nodes.push_back(node);
         }
 
@@ -253,13 +244,6 @@ bool Tree_Server::handle_msg(Tree_Message *m) {
             cout << " - LUX Report - Raw: " << (uint16_t) raw << " - Compensated = " << (uint16_t) comp;
 
         }
-        if(m->header->type == msg_types::test){
-            string addr = "";
-            for(int i = 0; i < 8; i++){
-                addr+=inttostring(m->header->data[i]) +"-";
-            }
-            cout << " - Sensor Addr = " << addr;
-        }
         cout << " - " << m->header->data << endl;
 
         node->handle_msg(m);
@@ -273,10 +257,17 @@ bool Tree_Server::handle_msg(Tree_Message *m) {
 
 };
 
-void Tree_Server::do_work() {
+void Tree_Server::mesh_worker() {
     
     this->buffer_tasks();
-    this->run_task();
+    // if(this->sleep > 5000){
+    //     this->sleep = this->sleep - 1;
+    // }
+    // }
+    //cout << "Sleep = " << sleep << endl;
+    // usleep(this->sleep / 2);
+    // if(this->connected){
+    usleep(this->sleep);
 
 }
 
@@ -293,11 +284,10 @@ void Tree_Server::buffer_tasks() {
         if (this->new_msg_buffer[i]->time_stamp < r_time) {
             //  log_d("MESID = %d, resend_cnt = %d", mes_buffer[i]->header->UID, mes_buffer[i]->resend_cnt);
             if (this->new_msg_buffer[i]->resend_cnt > MAX_RESEND) {
-                if(this->new_msg_buffer[i] != NULL){
                 // deleting message, node offline
                 // this->set_avg_turn_time(this->msg_buffer[i]);
                 cout << "Message buffer deleted, MAX RESEND REACHED - BufferNO: " << endl;
-                //Tree_Node *n = NULL;
+                Tree_Node *n = NULL;
                 for (int i = 0; i < this->nodes.size(); i++) {
                     if (this->nodes[i]->UID == this->new_msg_buffer[i]->to) {
                         this->nodes[i]->set_online(false);
@@ -306,13 +296,7 @@ void Tree_Server::buffer_tasks() {
                 }
                 delete this->new_msg_buffer[i];
                 this->new_msg_buffer.erase(this->new_msg_buffer.begin() + i);
-                i = i -1;
                 break;
-                }else{
-                    int bp = 0;
-                    bp++;
-                }
-                
             } else {
                 cout << "Resending message for the " << (uint32_t) this->new_msg_buffer[i]->resend_cnt << " time" << endl;
                 this->new_msg_buffer[i]->resend_msg(this);
@@ -331,7 +315,7 @@ void Tree_Server::network_send(char *data, uint16_t len) {
         this->stream->_send(data, len);
         this->last_message_send = this->get_timestamp_ms();
     } 
-    //usleep(2000);
+   // usleep(1000);
     this->network_send_mutex.unlock();
 
 
@@ -339,7 +323,7 @@ void Tree_Server::network_send(char *data, uint16_t len) {
 
 void Tree_Server::send_ping() {
     cout << "Send Ping" << endl;
-    Tree_Message *m = new Tree_Message(NULL, 0, msg_types::ping, 0, 0, (char*)"hallopop");
+    Tree_Message *m = new Tree_Message(NULL, 0, msg_types::ping, 0, 0, "hallopop");
     this->send_message(m);     
 }; 
 
@@ -374,16 +358,16 @@ void Tree_Server::run_task() {
     }
     this->msg_min = this->msg_min_buffer.size();
     uint32_t msg_sec = this->msg_min / 60;
-    if (msg_sec > 50) {
-        if (this->mesh_info_interval < UINT16_MAX - 1) {
-            this->mesh_info_interval = this->mesh_info_interval + 1;
+    if (msg_sec > 100) {
+        if (this->mesh_info_interval < UINT16_MAX - 100) {
+            this->mesh_info_interval = this->mesh_info_interval + 100;
         }
     } else {
         if (this->mesh_info_interval > 5000) {
-            this->mesh_info_interval = this->mesh_info_interval - 1;
+            this->mesh_info_interval = this->mesh_info_interval - 100;
         }
     }
-    //cout << "MSG PER MINUTE " << this->msg_min << " - MSG PER SEC " << msg_sec << " - INTERVAL " << this->mesh_info_interval << endl;
+    cout << "MSG PER MINUTE " << this->msg_min << " - MSG PER SEC " << msg_sec << " - INTERVAL " << this->mesh_info_interval << endl;
 
     time_t nu = time(0);
     std::tm* now = std::localtime(&nu);
@@ -398,16 +382,8 @@ void Tree_Server::run_task() {
         string Weekdays[7] = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         string Months[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "Oktober", "November", "December"};
         string Day = Weekdays[now->tm_wday];
-        string hour = inttostring(now->tm_hour);
-        if(now->tm_hour < 10){
-            hour = "0"+ inttostring(now->tm_hour);
-        }
-        string minute = inttostring(now->tm_min);
-        if(now->tm_min < 10){
-            minute = "0" + inttostring(now->tm_min);
-        }
-        string Clock = hour + ":" + minute;
-        string DateString = inttostring(now->tm_mday) +" "+ Months[now->tm_mon] + " "+ inttostring(now->tm_year + 1900);
+        string Clock = "--:--";
+        string DateString = "-- "+ Months[now->tm_mon] + "----";
         memcpy(this->datetime.ClockString, Clock.c_str(), sizeof(Clock)+1);
         memcpy(this->datetime.MonthString, DateString.c_str(), sizeof(DateString)+1);
         memcpy(this->datetime.WeekDayString, Day.c_str(), sizeof(Day)+1);
@@ -419,7 +395,7 @@ void Tree_Server::run_task() {
     }
     
 
-    /*
+
     if (this->nodes.size() > 0) {
 
         Tree_Node *node = this->nodes[this->index];
@@ -433,7 +409,6 @@ void Tree_Server::run_task() {
         }
         this->index++;
     }
-     */
     m.unlock();
 };
 
@@ -446,30 +421,15 @@ void Tree_Server::send_mesh_info() {
     tmp = tmp >> 8;
     info[2] = tmp & 0xFF;
 
-    Tree_Message *m = new Tree_Message(info, 8, 0xFFFFFFFF, msg_types::mesh_info, 0, 0, (char*)"-");
+    Tree_Message *m = new Tree_Message(info, 8, 0xFFFFFFFF, msg_types::mesh_info, 0, 0, "-");
     this->send_message(m);   
 };
 
 void Tree_Server::send_message(Tree_Message * m) {
-   // this->send_mutex.lock();
-   
-    
-  
+    m->send_msg(this);
     if ((m->msg_type == msg_types::ack) || (m->msg_type == msg_types::ping) || (m->to == 0xFFFFFFFF)) {
-         m->send_msg(this);
         delete m;
     } else {
-         Tree_Node *n = this->get_Node(m->to);
-         if(n != NULL){
-             if(n->online == false){
-                 delete m;
-                 return;
-             }
-         }else{
-             delete m;
-             return;
-         }
-         m->send_msg(this);
         this->buffer_mutex.lock();
         bool inserted = false;
         for (int i = 0; i < this->new_msg_buffer.size(); i++) {
@@ -486,44 +446,6 @@ void Tree_Server::send_message(Tree_Message * m) {
         }
         this->buffer_mutex.unlock();
     }
-   // this->send_mutex.unlock();
-}
-
-string Tree_Server::GetJson() {
-    Document d;
-    d.SetObject();
-    Document::AllocatorType &allocator = d.GetAllocator();
-    m.lock();
-    Value v;
-    v.SetString("TreeMesh", allocator);
-    d.AddMember("item", v, allocator); 
-    d.AddMember("msg_delay", this->mesh_info_interval, allocator);
-    d.AddMember("msg_per_minute", this->msg_min_buffer.size(), allocator);
-    Value MyArray(rapidjson::kArrayType);
-    for (int i = 0; i < this->nodes.size(); i++) {
-        MyArray.PushBack(this->nodes[i]->GetJsonValue(allocator), allocator);
-    }
-    d.AddMember("Nodes", MyArray, allocator);
-    m.unlock();
-    string ret = GetJsonString(d);
-    return ret;
-}
-
-void Tree_Server::Ident(uint32_t ident){
-    for(int i = 0; i < this->nodes.size(); i++){
-        if(this->nodes[i]->UID == ident){
-            this->nodes[i]->Ident();
-        }
-    }
-}
-
-Tree_Node *Tree_Server::get_Node(uint32_t nodeid){
-    for(int i = 0; i < this->nodes.size(); i++){
-        if(this->nodes[i]->UID == nodeid){
-            return this->nodes[i];
-        }
-    }
-    return NULL;
 }
  
 

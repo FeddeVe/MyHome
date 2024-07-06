@@ -11,8 +11,8 @@
  * Created on 17 februari 2016, 23:20
  */
 
-#ifndef TREE_SERVER_H
-#define TREE_SERVER_H
+#ifndef TCP_H
+#define TCP_H
 
 
 #include <string.h>
@@ -23,12 +23,9 @@
 #include <vector>
 #include <sys/time.h>
 
-#include "../../Global.h"
-
-#include "../../tcpacceptor.h" 
+#include "tcpacceptor.h" 
 #include <mutex>
-#include "../../Thread.h"
-#include "../../Master.h"
+#include "Thread.h" 
  
 #include <signal.h>
 #include <chrono>
@@ -40,24 +37,23 @@
 #include "Tree_Node.h"
 #include "Tree_OTA.h"
 
-/*
-#include "../../rapidjson/document.h"
-#include "../../rapidjson/stringbuffer.h"
-#include "../../rapidjson/writer.h"
-#include "../../rapidjson/error/en.h"
-#include "../../rapidjson/filereadstream.h"
- */
+
+#include "rapidjson/document.h"
+#include "rapidjson/stringbuffer.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/error/en.h"
+#include "rapidjson/filereadstream.h"
 
 #define MAX_RESEND 10
 #define MAX_LAYERS 25
 
-//class Master;
+class Master;
 class Tree_Node;
 class Tree_OTA;
 
 using namespace std; 
 using namespace std::chrono;
-//using namespace rapidjson;
+using namespace rapidjson;
 
   struct _str_DateTime{
         uint64_t timestamp_s;
@@ -72,22 +68,18 @@ using namespace std::chrono;
         uint16_t year;
     };
 
-enum NODE_TYPES{ 
+enum NODE_TYPES{
   MASTER = 0,
   MSH_DEBUG = 1,
   MSH_DISPLAY = 2,
-  MSH_BUTTONBOX = 3,
-  MSH_POWERMETER = 4
+  MSH_BUTTONBOX = 3
 };
 
 class Tree_Message;
-class Master;
 
 class Tree_Server:public Thread{
 private:  
     mutex m;
-    Master *refmaster;
-   // mutex send_mutex;
      std::vector<Tree_Message*>new_msg_buffer; 
     std::vector<Tree_Message*>rec_buffer;
     std::vector<Tree_Message*>send_buffer;
@@ -100,10 +92,10 @@ private:
     uint32_t msg_id;
     int sleep;    
     bool handle_msg(Tree_Message *m);
-    _str_DateTime datetime;
+    _str_DateTime datetime; 
     
 public:
-    Tree_Server(Master *refmaster);
+    Tree_Server();
     ~Tree_Server();   
     
     bool exit;
@@ -116,11 +108,8 @@ public:
     void quit();  
     void network_send(char *data, uint16_t len);    
     void send_message(Tree_Message *m); 
-    void do_work();
+    void mesh_worker();
     void buffer_tasks();
-    void Ident(uint32_t nodeid);
-    Tree_Node *get_Node(uint32_t nodeid);
-    string GetJson();
     uint32_t get_msg_id();
     uint64_t last_message_send;
     uint64_t last_mesh_info_send;
